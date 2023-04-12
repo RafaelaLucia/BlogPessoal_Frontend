@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
 .titulo {
     color: #794DB7;
     text-align: center;
@@ -17,4 +19,44 @@
     height: 500px;
     display: block;
     margin: 0 auto;
+}
+
+.bg-welcome{
+    background-color: #77a5bd; 
+    background-image: linear-gradient(to right, #28353c , #77a5bd);
+}
+
+.BoxIcons{
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    font-family: 'Rubik', sans-serif;
+    background-color: #628da4;
+    border-radius: 80%;
+    height: 90%;
+    width: 30%;
+}
+
+.TextBanner{
+    width: 400px;
+    height:400px;
+    display:flex; 
+    flex-direction: column; 
+    justify-content:space-evenly; 
+    align-items:center;
+    font-family: 'Rubik', sans-serif;
+}
+
+.btn-start{
+   border-color: white!important; 
+   background-color: #558BA5!important; 
+   color: white!important;
+   font-family: 'Rubik', sans-serif!important;
+   width: 120px;
+   height: 40px;
+}
+
+.btn-start:hover{
+    background-color: #385867!important; 
 }

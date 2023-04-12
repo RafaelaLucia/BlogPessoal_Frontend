@@ -18,6 +18,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logo from '../../../assets/logo.png';
+import blog from '../../../assets/blog.png';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -170,7 +171,7 @@ const useStyles = makeStyles((theme: Theme) =>
   
     return (
       <div className={classes.grow} >
-        <AppBar style={{backgroundColor: '#794DB7'}} position="static">
+        <AppBar style={{backgroundColor: '#558BA5'}} position="static">
           <Toolbar>
             <IconButton
               edge="start"
@@ -181,8 +182,9 @@ const useStyles = makeStyles((theme: Theme) =>
               <MenuIcon />
             </IconButton>
             <Typography style={{display: 'flex', alignItems: 'center'}} className={classes.title} variant="h6" noWrap>
-             <img src={logo} alt="" className='logo_input' />
-             <span style={{marginLeft: 15, color: 'black', fontWeight: 'bold', fontFamily: 'Arial'}}>Blog Pessoal</span>
+             <img src={logo} alt="" className='logo_input' style={{marginTop:'11px'}} />
+             {/* <span style={{marginLeft: 15, color: 'black', fontWeight: 'bold', fontFamily: 'Arial'}}>Blog Pessoal</span> */}
+             <img src={blog} alt="" style={{width: '110px', height: '50px'}} />
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
