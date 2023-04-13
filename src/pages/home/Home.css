@@ -24,6 +24,14 @@
 .bg-welcome{
     background-color: #77a5bd; 
     background-image: linear-gradient(to right, #28353c , #77a5bd);
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.IconFlex {
+    display: flex; 
+    justify-content: center;
 }
 
 .BoxIcons{
@@ -59,4 +67,18 @@
 
 .btn-start:hover{
     background-color: #385867!important; 
+}
+
+.boldWhiteText{
+    color: white!important;
+    font-weight: bold!important; 
+}
+
+.WhiteText{
+    color: white!important;
+}
+
+.imgSize{
+    width: 330px; 
+    height: 320px; 
 }
