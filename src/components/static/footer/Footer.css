@@ -1,0 +1,9 @@
+
+
+.containerInfos{
+    display: flex;
+    align-items: center;
+    background-color: #558BA5!important;
+    height: 120px;
+    justify-content: center;
+}

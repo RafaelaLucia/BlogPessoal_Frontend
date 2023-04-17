@@ -2,3 +2,8 @@
 .text-decorator-none {
     text-decoration: none;
 }
+
+.gridForm{
+    display: flex;
+    align-items: center;
+}

@@ -5,12 +5,13 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import blog from '../../../assets/blog.png';
+import './Footer.css'
 
 function Footer() {
     return (
         <>
             <Grid container direction="row" justifyContent="center" alignItems="center">
-                <Grid alignItems="center" item xs={12} style={{ backgroundColor: "#558BA5", height: "120px", display: 'flex', justifyContent: 'center' }}>
+                <Grid className='containerInfos' item xs={12}>
 
                     <Box style={{ width: '65%', height: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
 

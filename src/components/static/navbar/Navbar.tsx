@@ -91,11 +91,9 @@ function Navbar() {
             <MenuIcon />
           </IconButton>
           <Typography style={{ display: 'flex', alignItems: 'center' }} variant="h6" noWrap>
-            <Link to='/home'>
               <img src={logo} alt="" className='logo_input' style={{ marginTop: '11px' }} />
               {/* <span style={{marginLeft: 15, color: 'black', fontWeight: 'bold', fontFamily: 'Arial'}}>Blog Pessoal</span> */}
               <img src={blog} alt="" style={{ width: '110px', height: '50px' }} />
-            </Link>
           </Typography>
           <div className={classes.search}>
             <div className='searchIcon'>
@@ -118,7 +116,7 @@ function Navbar() {
           <div className='grow' />
           <div className={classes.sectionDesktop}>
             {/*  <AccountCircle style={{ cursor: "pointer", width: "40px", height: "40px"}} /> */}
-            <Link className='btn-nav' to='/login'>
+            <Link to='/'>
               <Button variant='contained' color='primary'>Sair</Button>
             </Link>
           </div>
