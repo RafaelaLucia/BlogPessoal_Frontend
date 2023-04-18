@@ -43,7 +43,6 @@ function Login() {
         } catch (error) {
             alert('dados do usuário inconsistentes. Erro ao logar!')
         }
-
     }
 
     return (

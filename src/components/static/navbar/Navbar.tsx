@@ -116,7 +116,7 @@ function Navbar() {
           <div className='grow' />
           <div className={classes.sectionDesktop}>
             {/*  <AccountCircle style={{ cursor: "pointer", width: "40px", height: "40px"}} /> */}
-            <Link to='/'>
+            <Link to='/login'>
               <Button variant='contained' color='primary'>Sair</Button>
             </Link>
           </div>

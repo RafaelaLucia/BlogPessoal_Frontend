@@ -61,8 +61,6 @@ function CadastroUsuario() {
             }
     }
 
-
-
     return (
         <Grid container direction='row' justifyContent='center' alignItems='center'>
 
