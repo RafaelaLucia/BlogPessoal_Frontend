@@ -1,11 +1,24 @@
-import React from 'react';
-import { Paper, Button, Grid, Typography } from '@material-ui/core';
+import React, {useEffect} from 'react';
+import { Paper, Button, Grid, Typography,  } from '@material-ui/core';
 import { Box } from '@mui/material';
 import './Home.css';
 import Bloguinho from '../../assets/bloguinho.png'
 import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem';
+import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
+import { useNavigate } from 'react-router-dom';
+import useLocalStorage from 'react-use-localstorage';
 
 function Home() {
+
+    let history = useNavigate();
+    const[token, setToken] = useLocalStorage('token');
+
+    useEffect(() => {
+        if(token == ''){
+            alert('Você precisa estar logado')
+            history('/login')
+        }
+    },[token])
 
     return (
         <>
@@ -18,6 +31,7 @@ function Home() {
                     </Box>
                     <Box className='IconFlex'>
                         <Box marginRight={1}>
+                            <ModalPostagem/>
                         </Box>
 
                     </Box>

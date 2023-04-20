@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css'
 
 // IMPORTAÇÕES
 import { alpha, makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { MenuItem, Toolbar, Button, Typography, IconButton, InputBase, Menu, AppBar, Badge } from '@material-ui/core';
+import { useNavigate } from 'react-router-dom';
+import useLocalStorage from 'react-use-localstorage';
+//icons e img
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -13,6 +16,15 @@ import blog from '../../../assets/blog.png';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
+  const [token, setToken] = useLocalStorage('token')
+  let history = useNavigate();
+
+  function goLogout() {
+    setToken('')
+    alert('Usuário deslogado')
+    history('/login')
+  }
+
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -90,11 +102,13 @@ function Navbar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography style={{ display: 'flex', alignItems: 'center' }} variant="h6" noWrap>
+          <Link to='/home' className='text-decorator-none'>
+            <Typography style={{ display: 'flex', alignItems: 'center' }} variant="h6" noWrap>
               <img src={logo} alt="" className='logo_input' style={{ marginTop: '11px' }} />
               {/* <span style={{marginLeft: 15, color: 'black', fontWeight: 'bold', fontFamily: 'Arial'}}>Blog Pessoal</span> */}
               <img src={blog} alt="" style={{ width: '110px', height: '50px' }} />
-          </Typography>
+            </Typography>
+          </Link>
           <div className={classes.search}>
             <div className='searchIcon'>
               <SearchIcon />
@@ -109,16 +123,14 @@ function Navbar() {
             />
           </div>
           <div style={{ display: 'flex', width: '490px', justifyContent: 'space-evenly' }}>
-            <Typography color="inherit" style={{ cursor: 'pointer' }}>Postagens</Typography>
-            <Typography color="inherit" style={{ cursor: 'pointer' }}>Temas</Typography>
-            <Typography color="inherit" style={{ cursor: 'pointer' }}>Cadastrar Tema</Typography>
+            <Link to='/posts' className='text-decorator-none'><Typography color="inherit" style={{ cursor: 'pointer' }}>Postagens</Typography></Link>
+            <Link to='/temas' className='text-decorator-none'><Typography color="inherit" style={{ cursor: 'pointer' }}>Temas</Typography></Link>
+            <Link to='/formularioTema' className='text-decorator-none'><Typography color="inherit" style={{ cursor: 'pointer' }}>Cadastrar Tema</Typography></Link>
           </div>
           <div className='grow' />
           <div className={classes.sectionDesktop}>
             {/*  <AccountCircle style={{ cursor: "pointer", width: "40px", height: "40px"}} /> */}
-            <Link to='/login'>
-              <Button variant='contained' color='primary'>Sair</Button>
-            </Link>
+            <Button variant='contained' color='primary' onClick={goLogout}>Sair</Button>
           </div>
           <div className={classes.sectionMobile}>
 
