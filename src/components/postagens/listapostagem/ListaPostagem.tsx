@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
+import { Card, CardActions, CardContent, Button, Typography, Grid } from '@material-ui/core';
 import { Box } from '@mui/material';
 import './ListaPostagem.css';
 import Postagem from '../../../models/Postagem';
-import useLocalStorage from 'react-use-localstorage';
 import { busca } from '../../../services/Service';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import ModalPostagem from '../modalPostagem/ModalPostagem';
+import { TokenState } from '../../../store/tokens/tokensReducer';
+import { useSelector } from 'react-redux';
 
 function ListaPostagem() {
   const [posts, setPosts] = useState<Postagem[]>([])
-  const [token, setToken] = useLocalStorage('token');
   let history = useNavigate();
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
 
   useEffect(() => {
     if (token == '') {
@@ -35,8 +38,10 @@ function ListaPostagem() {
 
   return (
     <>
+       <Grid container spacing={2}>
       {
         posts.map(post => (
+          <Grid item xs={12} sm={6} md={4} lg={3}>
           <Box m={2} >
             <Card variant="outlined">
               <CardContent>
@@ -74,8 +79,10 @@ function ListaPostagem() {
               </CardActions>
             </Card>
           </Box>
+          </Grid>
         ))
       }
+      </Grid>
     </>)
 }
 

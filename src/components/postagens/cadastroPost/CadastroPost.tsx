@@ -17,7 +17,6 @@ function CadastroPost() {
         if (token == "") {
             alert("Você precisa estar logado")
             navigate("/login")
-
         }
     }, [token])
 
@@ -25,7 +24,9 @@ function CadastroPost() {
         {
             id: 0,
             descricao: ''
-        })
+        }
+    )
+
     const [postagem, setPostagem] = useState<Postagem>({
         id: 0,
         titulo: '',
@@ -77,14 +78,14 @@ function CadastroPost() {
         e.preventDefault()
 
         if (id !== undefined) {
-            put(`postagens`, postagem, setPostagem, {
+            await put(`postagens`, postagem, setPostagem, {
                 headers: {
                     'Authorization': token
                 }
             })
             alert('Postagem atualizada com sucesso');
         } else {
-            post(`postagens`, postagem, setPostagem, {
+            await post(`postagens`, postagem, setPostagem, {
                 headers: {
                     'Authorization': token
                 }

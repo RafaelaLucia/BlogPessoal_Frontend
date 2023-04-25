@@ -14,16 +14,25 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import logo from '../../../assets/logo.png';
 import blog from '../../../assets/blog.png';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
+import { addToken } from '../../../store/tokens/actions';
 
 function Navbar() {
-  const [token, setToken] = useLocalStorage('token')
   let history = useNavigate();
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
+
+  const dispatch = useDispatch();
 
   function goLogout() {
-    setToken('')
+    dispatch(addToken(''));
     alert('Usuário deslogado')
     history('/login')
   }
+
+  var navbarComponent;
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -90,64 +99,68 @@ function Navbar() {
     </Menu>
   );
 
+  if(token != ""){
+     navbarComponent = <AppBar className='backgroundColorBlue' position="static">
+     <Toolbar>
+       <IconButton
+         edge="start"
+         className='marginRight'
+         color="inherit"
+         aria-label="open drawer"
+       >
+         <MenuIcon />
+       </IconButton>
+       <Link to='/home' className='text-decorator-none'>
+         <Typography style={{ display: 'flex', alignItems: 'center' }} variant="h6" noWrap>
+           <img src={logo} alt="" className='logo_input' style={{ marginTop: '11px' }} />
+           {/* <span style={{marginLeft: 15, color: 'black', fontWeight: 'bold', fontFamily: 'Arial'}}>Blog Pessoal</span> */}
+           <img src={blog} alt="" style={{ width: '110px', height: '50px' }} />
+         </Typography>
+       </Link>
+       <div className={classes.search}>
+         <div className='searchIcon'>
+           <SearchIcon />
+         </div>
+         <InputBase
+           placeholder="Pesquisar…"
+           className='inputRoot'
+           classes={{
+             input: classes.inputInput,
+           }}
+           inputProps={{ 'aria-label': 'search' }}
+         />
+       </div>
+       <div style={{ display: 'flex', width: '490px', justifyContent: 'space-evenly' }}>
+         <Link to='/posts' className='text-decorator-none'><Typography color="inherit" style={{ cursor: 'pointer' }}>Postagens</Typography></Link>
+         <Link to='/temas' className='text-decorator-none'><Typography color="inherit" style={{ cursor: 'pointer' }}>Temas</Typography></Link>
+         <Link to='/formularioTema' className='text-decorator-none'><Typography color="inherit" style={{ cursor: 'pointer' }}>Cadastrar Tema</Typography></Link>
+       </div>
+       <div className='grow' />
+       <div className={classes.sectionDesktop}>
+         {/*  <AccountCircle style={{ cursor: "pointer", width: "40px", height: "40px"}} /> */}
+         <Button variant='contained' color='primary' onClick={goLogout}>Sair</Button>
+       </div>
+       <div className={classes.sectionMobile}>
+
+         <IconButton
+           aria-label="show more"
+           aria-controls={mobileMenuId}
+           aria-haspopup="true"
+           onClick={handleMobileMenuOpen}
+           color="inherit"
+         >
+           <MoreIcon />
+         </IconButton>
+       </div>
+     </Toolbar>
+   </AppBar>
+   {renderMobileMenu}
+   {renderMenu}
+  }
+
   return (
     <div className='grow' >
-      <AppBar className='backgroundColorBlue' position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className='marginRight'
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Link to='/home' className='text-decorator-none'>
-            <Typography style={{ display: 'flex', alignItems: 'center' }} variant="h6" noWrap>
-              <img src={logo} alt="" className='logo_input' style={{ marginTop: '11px' }} />
-              {/* <span style={{marginLeft: 15, color: 'black', fontWeight: 'bold', fontFamily: 'Arial'}}>Blog Pessoal</span> */}
-              <img src={blog} alt="" style={{ width: '110px', height: '50px' }} />
-            </Typography>
-          </Link>
-          <div className={classes.search}>
-            <div className='searchIcon'>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Pesquisar…"
-              className='inputRoot'
-              classes={{
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-          <div style={{ display: 'flex', width: '490px', justifyContent: 'space-evenly' }}>
-            <Link to='/posts' className='text-decorator-none'><Typography color="inherit" style={{ cursor: 'pointer' }}>Postagens</Typography></Link>
-            <Link to='/temas' className='text-decorator-none'><Typography color="inherit" style={{ cursor: 'pointer' }}>Temas</Typography></Link>
-            <Link to='/formularioTema' className='text-decorator-none'><Typography color="inherit" style={{ cursor: 'pointer' }}>Cadastrar Tema</Typography></Link>
-          </div>
-          <div className='grow' />
-          <div className={classes.sectionDesktop}>
-            {/*  <AccountCircle style={{ cursor: "pointer", width: "40px", height: "40px"}} /> */}
-            <Button variant='contained' color='primary' onClick={goLogout}>Sair</Button>
-          </div>
-          <div className={classes.sectionMobile}>
-
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
+     {navbarComponent}
     </div>
   );
 }
