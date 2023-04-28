@@ -5,3 +5,7 @@
  .all_container{
     background-color: #558BA5 !important;
  }
+
+ .text-decorator-none {
+   text-decoration: none;
+}

@@ -1,0 +1,32 @@
+
+.yes{
+    background-color: #558BA5!important;
+    font-family: 'Rubik', sans-serif!important;
+}
+
+.no{
+    background-color: #6c6d6e!important;
+    font-family: 'Rubik', sans-serif!important;
+}
+
+.texytype{
+    color: black!important;
+    font-weight: bold!important;
+    font-size: 18px!important;
+    font-family: 'Rubik', sans-serif!important;
+}
+
+.cards1{
+    background-color: rgb(224, 224, 224)!important;
+    width: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.boxers{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

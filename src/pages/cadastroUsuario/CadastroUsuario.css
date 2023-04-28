@@ -1,4 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 .text-decorator-none {
     text-decoration: none;
+}
+
+.textInform{
+    font-weight: bold!important;
+    font-family: 'Rubik', sans-serif!important;
+}
+
+.font{
+    font-family: 'Rubik', sans-serif!important;
+}
+
+.fontLink{
+    color: #558BA5;
+}
+
+.fontLink:hover{
+    color: #3a5e70;
+}
+
+.gridWrap{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.buttonRegister{
+    background-color: #558BA5!important;
+    text-transform: capitalize!important;
+    width: 150px;
+    height: 40px;
+    font-family: 'Rubik', sans-serif!important;
+}
+
+
+.buttonRegister:hover{
+    background-color: #3a5e70!important;
 }

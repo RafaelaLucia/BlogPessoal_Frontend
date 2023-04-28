@@ -1,3 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
 .topo{
     margin-top: 20px;
+}
+
+.formName2{
+    font-family: 'Rubik', sans-serif!important;
+    font-size: 30px!important;
+    width: 550px;
+    color: #558BA5!important;
+}
+
+.button2{
+    background-color: #558BA5!important;
+    text-transform: capitalize!important;
+    width: 150px;
+    height: 40px;
+    font-family: 'Rubik', sans-serif!important;
+    margin-top: 10px!important;
+}
+
+.formar{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 250px;
 }

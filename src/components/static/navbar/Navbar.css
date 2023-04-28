@@ -41,3 +41,11 @@
 .text-decorator-none:hover {
     color: rgb(185, 182, 182);
 }
+
+.botaosair{
+    background-color: #27292a!important;
+    text-transform: capitalize!important;
+    width: 100px;
+    height: 40px;
+    font-family: 'Rubik', sans-serif!important;
+}

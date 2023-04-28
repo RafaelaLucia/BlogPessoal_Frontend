@@ -3,6 +3,13 @@
 }
 
 .btnModal{
-    border-color: white !important;
-    background-color: white !important;
+    background-color: #558BA5!important;
+    font-weight: bold!important;
+    color: white!important;
+    font-family: 'Rubik', sans-serif!important;
+}
+
+.btnModal:hover{
+    background-color: #385867!important;
+    color: rgb(173, 173, 173)!important;
 }

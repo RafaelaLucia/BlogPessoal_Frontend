@@ -5,10 +5,10 @@ import { Box } from '@mui/material';
 import './ListaPostagem.css';
 import Postagem from '../../../models/Postagem';
 import { busca } from '../../../services/Service';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import ModalPostagem from '../modalPostagem/ModalPostagem';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import foto from '../../../assets/profile.png';
 
 function ListaPostagem() {
   const [posts, setPosts] = useState<Postagem[]>([])
@@ -19,7 +19,16 @@ function ListaPostagem() {
 
   useEffect(() => {
     if (token == '') {
-      alert('Você precisa estar logado!')
+      toast.warn('Você precisa estar logado!', {
+        position: "top-center",
+        autoClose: 3500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "colored",
+    });
       history('/login')
     }
   }, [token])
@@ -38,39 +47,42 @@ function ListaPostagem() {
 
   return (
     <>
-       <Grid container spacing={2}>
+       <Grid container spacing={2} className='grid'>
       {
         posts.map(post => (
-          <Grid item xs={12} sm={6} md={4} lg={3}>
+          <Grid item xs={12} sm={6} md={4} lg={3} >
           <Box m={2} >
-            <Card variant="outlined">
+            <Card variant="outlined" className="card">
               <CardContent>
-                <Typography color="textSecondary" gutterBottom>
-                  Postagens
-                </Typography>
-                <Typography variant="h5" component="h2">
+                <Box className="wrap">
+                <img src={foto} alt="" className='profile' />
+                <Typography variant="h5" component="h2" className='title'>
                   {post.titulo}
                 </Typography>
-                <Typography variant="body2" component="p">
-                  {post.texto}
-                </Typography>
-                <Typography variant="body2" component="p">
+                </Box>
+                <Box className='wraptext'>
+                <Typography variant="body2" component="p" className='theme'>
                   {post.tema?.descricao}
                 </Typography>
+                <Typography variant="body2" component="p" className='text'>
+                  {post.texto}
+                </Typography>
+                </Box>
+               
               </CardContent>
               <CardActions>
                 <Box display="flex" justifyContent="center" mb={1.5}>
 
                   <Link to={`/formularioPostagem/${post.id}`} className="text-decorator-none" >
                     <Box mx={1}>
-                      <Button variant="contained" className="marginLeft" size='small' color="primary" >
+                      <Button variant="contained" className="update" size='small' color="primary" >
                         atualizar
                       </Button>
                     </Box>
                   </Link>
                   <Link to={`/deletarPostagem/${post.id}`} className="text-decorator-none">
                     <Box mx={1}>
-                      <Button variant="contained" size='small' color="secondary">
+                      <Button variant="contained" size='small' color="secondary" className="delete">
                         deletar
                       </Button>
                     </Box>

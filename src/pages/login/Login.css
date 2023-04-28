@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 .text-decorator-none {
     text-decoration: none;
@@ -6,4 +7,81 @@
 .gridForm{
     display: flex;
     align-items: center;
+}
+
+.textInform{
+   font-weight: bold!important;
+   font-family: 'Rubik', sans-serif!important;
+}
+
+.font{
+    font-family: 'Rubik', sans-serif!important;
+}
+
+.fontLink{
+    color: #558BA5;
+}
+
+.fontLink:hover{
+    color: #3a5e70;
+}
+
+.box_signup{
+    width: 500px;
+}
+
+.loginImg{
+    width: 400px;
+    height: 400px;
+}
+
+.buttonLogin{
+    background-color: #558BA5!important;
+    text-transform: capitalize!important;
+    width: 150px;
+    height: 40px;
+    font-family: 'Rubik', sans-serif!important;
+}
+
+.GridWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+.buttonLogin:hover{
+    background-color: #3a5e70!important;
+}
+
+@media only screen and (max-width: 778px) {
+
+    .loginImg{
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media only screen and (max-width: 459px) {
+    .loginImg{
+        width: 290px;
+        height: 290px;
+    }
+
+    .inputlogin{
+        width: 300px!important;
+    }
+
+    .myForm{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 400px;
+    }
+
+    .box_signup{
+        width: 400px;
+    }
 }

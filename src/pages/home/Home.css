@@ -82,3 +82,19 @@
     width: 330px; 
     height: 320px; 
 }
+
+.text-decorator-none {
+    text-decoration: none;
+}
+
+.botao{
+    background-color: white!important;
+    font-weight: bold!important;
+    color: #385867!important;
+    font-family: 'Rubik', sans-serif!important;
+}
+
+.botao:hover{
+    background-color: rgb(174, 174, 174)!important;
+    color: #273e48!important;
+}

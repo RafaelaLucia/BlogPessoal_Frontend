@@ -1,10 +1,11 @@
 import React, { useState, useEffect, ChangeEvent } from 'react'
 import { Container, Typography, TextField, Button } from "@material-ui/core"
-import './CadastroTema.css';
+import './cadastroTema.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import Tema from '../../../models/Tema';
 import { buscaId, post, put } from '../../../services/Service';
+import { toast } from 'react-toastify';
 
 function CadastroTema() {
     let history = useNavigate();
@@ -17,7 +18,16 @@ function CadastroTema() {
 
     useEffect(() => {
         if (token == '') {
-            alert('Você precisa estar logado!')
+            toast.warn('Você precisa estar logado!', {
+                position: "top-center",
+                autoClose: 3500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "colored",
+            });
             history('/login')
         }
     }, [token])
@@ -53,14 +63,32 @@ function CadastroTema() {
                     'Authorization' : token
                 }
             })
-            alert('Tema atualizado com sucesso');
+            toast.success('Tema Atualizado com Sucesso!', {
+                position: "top-center",
+                autoClose: 3500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "colored",
+            });
         }else {
             post(`/temas`, tema, setTema, {
                 headers: {
                     'Authorization' : token
                 }
             })
-            alert('Tema cadastrado com sucesso');
+            toast.success('Tema Cadastrado com Sucesso!', {
+                position: "top-center",
+                autoClose: 3500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "colored",
+            });
         }
         back()
     }
@@ -71,10 +99,10 @@ function CadastroTema() {
 
     return (
         <Container maxWidth="sm" className="topo">
-            <form onSubmit={onSubmit}>
-                <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro tema</Typography>
-                <TextField value={tema.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedTema(e)} id="descricao" label="descricao" variant="outlined" name="descricao" margin="normal" fullWidth />
-                <Button type="submit" variant="contained" color="primary">
+            <form onSubmit={onSubmit} className='formar'>
+                <Typography variant="h3" color="textSecondary" component="h1" align="center" className="formName2">Formulário de cadastro tema</Typography>
+                <TextField value={tema.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedTema(e)} id="descricao" label="Descrição do Tema" variant="outlined" name="descricao" margin="normal" fullWidth />
+                <Button type="submit" variant="contained" color="primary"  className='button2'>
                     Finalizar
                 </Button>
             </form>

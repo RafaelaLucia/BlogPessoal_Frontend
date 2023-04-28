@@ -8,6 +8,7 @@ import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import Banner from '../../../assets/bannermenu.png'
 import ListaPostagem from '../listapostagem/ListaPostagem';
 import './TabPostagem.css';
+import { Link } from 'react-router-dom';
 
 
 function TabPostagem() {
@@ -55,7 +56,9 @@ function TabPostagem() {
                         <Grid item className='TextBanner'>
                             <h2 style={{ textAlign: 'center' }}>Exponha seus temas favoritos!</h2>
                             <p>Nosso Blog Pessoal é o lugar perfeito para discutir seus interesses com os outros! Crie seus temas prediletos e publique suas opiniões no nosso fórum </p>
+                            <Link to='/formularioPostagem' className='text-decorator-none'>
                             <Button className='btn-start'>Criar post</Button>
+                            </Link>
                         </Grid>
                     </Grid>
 

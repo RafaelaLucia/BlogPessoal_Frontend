@@ -8,11 +8,12 @@ import UsuarioLogin from '../../models/UsuarioLogin';
 import PhotoLogin from '../../assets/imgLogin.png';
 import { useDispatch } from 'react-redux';
 import { addToken } from '../../store/tokens/actions';
+import { toast } from 'react-toastify';
 
 function Login() {
 
     let history = useNavigate();
-    const dispatch = useDispatch();
+    const dispatch = useDispatch(); //envio(disparar), serve pra disparar a ação (pacote) com as informações que precisam ser atualizadas
     const [token, setToken] = useState('');
     const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
         {
@@ -41,38 +42,56 @@ function Login() {
         e.preventDefault();
         try {
             await login(`/usuarios/logar`, usuarioLogin, setToken)
-            alert('Usuario logado com sucesso');
+            toast.success('Usuário Logado com Sucesso!', {
+                position: "top-center",
+                autoClose: 3500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
 
         } catch (error) {
-            alert('dados do usuário inconsistentes. Erro ao logar!')
+            toast.error('Dados inconsistentes. Erro ao Logar!', {
+                position: "top-center",
+                autoClose: 3500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "colored",
+            });
         }
     }
 
     return (
-        <Grid container direction='row' justifyContent='center' alignItems='center'>
+        <Grid container className="GridWrap">
 
-            <Grid item xs={3}>
-                <img src={PhotoLogin} alt="" style={{ width: '400px', height: '400px' }} />
+            <Grid item xs={4} md={3}>
+                <img src={PhotoLogin} alt="" className='loginImg' />
             </Grid>
 
-            <Grid className='gridForm' item xs={6}>
+            <Grid className='gridForm' item xs={8} md={6}>
                 <Box flexDirection='column' style={{ display: 'flex' }} paddingX={20}>
-                    <form onSubmit={onSubmit}>
-                        <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' style={{ fontWeight: 'bold' }}>Entrar</Typography>
-                        <TextField value={usuarioLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='usuario' label='usuario' variant='outlined' name='usuario' margin='normal' fullWidth />
-                        <TextField value={usuarioLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth />
+                    <form className="myForm" onSubmit={onSubmit}>
+                        <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' className="textInform">Entrar</Typography>
+                        <TextField value={usuarioLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='usuario' label='Usuário' variant='outlined' name='usuario' margin='normal' className='inputlogin' fullWidth />
+                        <TextField value={usuarioLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='senha' label='Senha' variant='outlined' name='senha' margin='normal' type='password' className='inputlogin' fullWidth />
                         <Box marginTop={2} textAlign='center'>
-                            <Button type='submit' variant='contained' color='primary'>
+                            <Button type='submit' variant='contained' color='primary' className='buttonLogin'>
                                 Logar
                             </Button>
                         </Box>
                     </form>
-                    <Box display='flex' justifyContent='center' marginTop={2}>
+                    <Box display='flex' justifyContent='center' marginTop={2} className='box_signup'>
                         <Box marginRight={1}>
-                            <Typography variant='subtitle1' gutterBottom align='center' >Não tem uma conta?</Typography>
+                            <Typography variant='subtitle1' gutterBottom align='center' className="font" >Não tem uma conta?</Typography>
                         </Box>
-                        <Link to='/cadastro'>
-                            <Typography variant='subtitle1' gutterBottom align='center' style={{ fontWeight: 'bold' }}>cadastre-se</Typography>
+                        <Link to='/cadastro' className='text-decorator-none'>
+                            <Typography variant='subtitle1' gutterBottom align='center' className="font fontLink" style={{ fontWeight: 'bold' }}>cadastre-se</Typography>
                         </Link>
                     </Box>
                 </Box>

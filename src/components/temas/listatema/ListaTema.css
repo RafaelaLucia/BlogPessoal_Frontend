@@ -1,3 +1,35 @@
 .text-decorator-none{
     text-decoration: none;
 }
+
+.card2{
+    width: 300px;
+}
+
+.update{
+    background-color: #558BA5!important;
+    font-family: 'Rubik', sans-serif!important;
+}
+
+.delete{
+    background-color: #6c6d6e!important;
+    font-family: 'Rubik', sans-serif!important;
+}
+
+.buttonList{
+    font-family: 'Rubik', sans-serif!important;
+    text-transform: capitalize!important;
+    height: 50px;
+}
+
+.grid2{
+    background-color: #666;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonList:hover{
+    background-color: rgb(195, 188, 188)!important;
+}
